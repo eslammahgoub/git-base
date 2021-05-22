@@ -1,0 +1,39 @@
+.mat-dialog-container {
+  overflow: hidden !important;
+  padding: 0px !important;
+  min-width: 500px;
+}
+
+.mat-dialog-actions {
+  padding: 25px 16px !important;
+}
+
+.mat-dialog-content {
+  margin: 0px !important;
+  height: $full-block;
+}
+
+.dialog-divider {
+  margin: 15px !important;
+}
+
+.dialog-chip-icon {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 5px !important;
+}
+
+.dialog-header {
+  min-height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 700px) {
+  .mat-dialog-container {
+    max-width: $full-w-view !important;
+    width: $full-w-view !important;
+    min-width: auto !important;
+    margin: -30px !important;
+  }
+}

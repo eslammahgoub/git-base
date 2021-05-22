@@ -1,0 +1,19 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+gitbase-root, gitbase-root > div.wrapper, body, html {
+  height: $full-block;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wrap {
+  padding: 0 30px;
+}

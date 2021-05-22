@@ -1,0 +1,38 @@
+<!-- Repositories -->
+<mat-list class="repo-list">
+  <!-- repo search result counts -->
+  <div mat-subheader>{{(reposCount | number) + ' repository results'}}</div>
+  <!-- List of the repo -->
+  <mat-list-item *ngFor="let repo of repos, let last = last; trackBy: trackItem" class="list-item">
+    <mat-icon matListAvatar>summarize</mat-icon>
+    <div mat-line class="link--normal" (click)="setSelectedRepoURL(repo.url)">{{repo.full_name}}</div>
+    <div mat-line>{{repo.description}}</div>
+    <div mat-line fxLayout="row wrap" fxLayoutGap="20px" fxLayoutAlign="start center">
+      <!-- Updated at -->
+      <span>
+        {{'Updated ' + (repo.updated_at | date)}}
+      </span>
+      <!-- license -->
+      <span *ngIf="repo.license">{{repo.license.name}}</span>
+      <!-- language -->
+      <span *ngIf="repo.language">
+        <mat-chip-list [selectable]="false">
+          <mat-chip [disableRipple]="true" [selectable]="false">{{repo.language}}</mat-chip>
+        </mat-chip-list>
+      </span>
+      <!-- open issues -->
+      <a class="link--muted" target="_blank" [href]="getUrlIssue(repo.issues_url)">
+        <span *ngIf="repo.open_issues_count > 0">{{repo.open_issues_count + ' issues need help'}}</span>
+      </a>
+      <span>
+          {{(repo.stargazers_count ? (repo.stargazers_count | number) : 0) + ' stars'}}
+      </span>
+    </div>
+    <!-- Favorite button -->
+    <button mat-icon-button align="end" (click)="toggleRepoFavorite(repo)" matTooltip="{{repo.favorite ? 'unfavorite' : 'favorite'}}">
+      <mat-icon [class.favorite]="repo.favorite">{{repo.favorite ? 'star':  'star_outline'}}</mat-icon>
+    </button>
+    <mat-divider *ngIf="!last"></mat-divider>
+  </mat-list-item>
+</mat-list>
+<mat-paginator [length]="reposCount" [pageIndex]="currentPageIndex" [pageSize]="pageSize" [pageSizeOptions]="[30]" (page)="pageChanged($event)"></mat-paginator>

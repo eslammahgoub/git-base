@@ -1,0 +1,15 @@
+<!-- Top Page -->
+<div id="top"></div>
+
+<!-- Content -->
+<div class="wrapper" role="main">
+  <!-- Header -->
+  <gitbase-header [enableFilter]="hasItems" (searchChanged)="getItems($event)"></gitbase-header>
+  <!-- Viewer -->
+  <gitbase-viewer>
+    <router-outlet></router-outlet>
+  </gitbase-viewer>
+</div>
+
+<!-- Bottom Page -->
+<div id="bottom"></div>

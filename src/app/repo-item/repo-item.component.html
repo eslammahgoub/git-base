@@ -1,0 +1,47 @@
+<!-- Repo Item view -->
+<div fxLayout="row" fxFlex="100%">
+  <div fxLayout="column" fxFlex="100%">
+    <!-- Back area -->
+    <div fxLayout="row" fxFlex="100%">
+      <button mat-icon-button matTooltip="back to list" class="back-btn" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </div>
+    <!-- Repo area -->
+    <ng-container *ngIf="repo && repo.full_name">
+      <div fxLayout="row" fxLayoutAlign="center center" fxFlex="100%">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" fxFlex="100%">
+          <img class="avatar mat-elevation-z1" [src]="repo.owner.avatar_url" [alt]="repo.full_name">
+          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <p class="mat-title">{{repo.name | titlecase}}</p>
+            <mat-icon matTooltip="{{repo.private ? 'private' : 'public'}}" class="public-icon">{{repo.private ? 'public_off' : 'public'}}</mat-icon>
+            <!-- Favorite button -->
+            <button mat-icon-button class="favorite-btn" (click)="toggleFavorite()" matTooltip="{{(repoFavorite | async) ? 'unfavorite' : 'favorite'}}">
+              <mat-icon [class.favorite]="(repoFavorite | async)">{{(repoFavorite | async) ? 'star':  'star_outline'}}</mat-icon>
+            </button>
+          </div>
+          <div class="description">{{repo.description}}</div>
+          <a class="link--muted" target="_blank" [href]="getUrlIssue(repo.issues_url)">
+            <span *ngIf="repo.open_issues_count > 0">{{repo.open_issues_count + ' issues need help'}}</span>
+          </a>
+          <div>{{'Updated ' + (repo.updated_at | date)}}</div>
+          <span *ngIf="repo.language">
+            <mat-chip-list [selectable]="false">
+              <mat-chip [disableRipple]="true" [selected]="true" color="primary">{{repo.language}}</mat-chip>
+            </mat-chip-list>
+          </span>
+          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15px" *ngIf="repo.license">
+            <mat-icon matTooltip="license">menu_book</mat-icon>
+            <span>{{repo.license.name}}</span>
+          </div>
+          <div *ngIf="repo.watchers_count > 0">{{'watchers ' + (repo.watchers_count | number)}}</div>
+          <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="15px" *ngIf="repo.forks_count > 0">
+            <mat-icon matTooltip="forks">call_split</mat-icon>
+            <span>{{repo.forks_count | number}}</span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+

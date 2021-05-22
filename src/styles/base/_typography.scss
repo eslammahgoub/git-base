@@ -1,0 +1,30 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $main-font;
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+a {
+  font-family: $code-font;
+}
+
+mat-form-field {
+  font-size: 1.6rem !important;
+}
+
+.mat-list-base .mat-subheader {
+  font-size: 1.3em;
+  font-weight: 200;
+}
+
+.title {
+  font-weight: 300;
+}
+
+.dialog-chip-icon {
+  font-size: 20px !important;
+}

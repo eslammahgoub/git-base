@@ -1,0 +1,17 @@
+a.link {
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.link--normal {
+  cursor: pointer;
+  color: $muted-color;
+}
+
+.link--normal:hover {
+  text-decoration: underline;
+}
+
+.link--muted:hover {
+  color: $muted-color;
+}
