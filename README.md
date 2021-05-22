@@ -4,10 +4,11 @@ Preview [git-base](https://git-base.netlify.app/) Challange Code
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
-- I tried to minimize the effort for the design UI I had a lot of thoughts in my mind but I keep it simple.
+- I tried to minimize the effort for the design UI (the search input looks and works exactly like Github search input) I had a lot of thoughts in my mind but I keep it simple.
 - I add a new feature for storage service to store the current app schema into the local storage.
 - I did the state management for favorite in repo item component only.
 - I add some of the Unit tests and the automation test you can check.
+
 # Estimation
 
 It took 9 hours.
