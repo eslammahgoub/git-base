@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/59d9f1f1-ce49-4efb-9cc0-82317c8f09a7/deploy-status)](https://app.netlify.com/sites/git-base/deploys)
+
 # GitBase
 
 Preview [git-base](https://git-base.netlify.app/) Challange Code
