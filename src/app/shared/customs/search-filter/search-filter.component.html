@@ -1,0 +1,33 @@
+<!-- Search & Filter & Sort -->
+<div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center" role="search">
+  <!-- Search Field -->
+  <mat-form-field appearance="legacy" floatLabel="never" role="combobox" *ngIf="searchOn">
+    <input matInput [formControl]="searchCtrl" placeholder="Search GitBase" [matAutocomplete]="auto" id="search-input">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="setSearchValue($event)">
+      <mat-option [value]="searchCtrl.value" *ngIf="searchCtrl.value != null && searchCtrl.value.trim().length > 0">
+        <!-- @Note this is a github search combobox -->
+        <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+          <mat-icon fxHide.xs>search</mat-icon>
+          <span class="search-text">{{searchCtrl.value}}</span>
+          <span class="spacer" fxHide.xs></span>
+          <mat-chip-list [selectable]="false" fxHide.xs>
+            <mat-chip [disableRipple]="true" [selectable]="false">All Github <mat-icon>keyboard_return</mat-icon></mat-chip>
+          </mat-chip-list>
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+    <button mat-icon-button matSuffix (click)="toggleSearch()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <!-- Filter && Sort -->
+  <button mat-icon-button class="filter-btn" (click)="openFilterDialog()" matTooltip="filter" *ngIf="!searchOn && filterOn">
+    <mat-icon>filter_list</mat-icon>
+  </button>
+
+  <!-- Search -->
+  <button mat-icon-button class="search-btn" (click)="toggleSearch()" matTooltip="search" *ngIf="!searchOn">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>

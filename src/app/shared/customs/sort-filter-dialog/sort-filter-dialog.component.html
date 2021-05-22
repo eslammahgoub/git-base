@@ -1,0 +1,53 @@
+
+<!-- Sort && Filter Dialog -->
+<div role="dialog">
+<!-- Dialog Header -->
+<mat-toolbar fxLayout="row wrap" class="gitbase-header mat-elevation-z3 dialog-header" role="toolbar">
+  <span fxLayout="column">
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+      <button [mat-dialog-close]="false" cdkFocusInitial mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+      <p class="title">Sort and Order</p>
+    </div>
+  </span>
+  <span class="spacer"></span>
+  <button mat-flat-button (click)="apply()">Apply</button>
+</mat-toolbar>
+<!-- Dialog Content -->
+<mat-dialog-content>
+  <div fxLayout="column" fxLayoutGap="25px">
+    <mat-list>
+      <!-- Sort BY List -->
+      <h3 matSubheader class="sort-by">Sort BY</h3>
+      <mat-list-item>
+        <mat-chip-list aria-label="Sort selection">
+          <mat-chip (click)="selectSort(sort.key)" *ngFor="let sort of availableSortOptions | keyvalue" [selected]="isSelectedSort(sort.value)" [class.selected]="isSelectedSort(sort.value)" [value]="sort.value">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-icon *ngIf="isSelectedSort(sort.value)" class="dialog-chip-icon">check</mat-icon>
+              {{sort.key | titlecase}}
+            </div>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-list-item>
+      <mat-divider class="dialog-divider"></mat-divider>
+      <!-- Order BY List -->
+      <h3 matSubheader class="order-by">Order BY</h3>
+      <mat-list-item>
+        <mat-chip-list aria-label="Order selection">
+          <mat-chip (click)="selectOrder(order.key)" *ngFor="let order of availableOrderOptions | keyvalue" [selected]="isSelectedOrder(order.value)"  [class.selected]="isSelectedOrder(order.value)" [value]="order.value">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <mat-icon *ngIf="isSelectedOrder(order.value)" class="dialog-chip-icon">check</mat-icon>
+              {{order.key | titlecase}}
+            </div>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-list-item>
+   </mat-list>
+  </div>
+</mat-dialog-content>
+<!-- Dialog Actions -->
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="resetAll()">RESET ALL</button>
+</mat-dialog-actions>
+</div>
