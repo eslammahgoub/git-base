@@ -1,0 +1,11 @@
+<!-- HEADER -->
+<mat-toolbar class="gitbase-header mat-elevation-z3" role="toolbar">
+  <!-- Logo -->
+  <div class="logo" fxLayout="column" fxFlex="150px" fxFlex.sm="100px" fxFlex.xs="100px">
+    <gitbase-logo></gitbase-logo>
+  </div>
+  <!-- Spacer -->
+  <div class="spacer" fxLayout="column" fxFlex="100%"></div>
+  <!-- Search && Filter && Sort -->
+  <gitbase-search-filter [searchOn]="!enableFilter" [filterOn]="enableFilter" (searchValue)="searchChanged.emit($event)"></gitbase-search-filter>
+</mat-toolbar>
